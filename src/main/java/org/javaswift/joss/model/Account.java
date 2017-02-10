@@ -182,4 +182,10 @@ public interface Account extends ObjectStoreEntity, ListHolder<Container> {
     */
     boolean isTenantSupplied();
 
+    /**
+     * Checks whether there is an external authentication method.
+     * @return whether an external authentication method exists.
+     */
+    boolean hasExternalAuthentication();
+
 }

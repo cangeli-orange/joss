@@ -33,6 +33,9 @@ public abstract class AbstractClient<A extends Account> implements Client<A> {
     @Override
     public A authenticate() {
         A account = createAccount();
+        if (account.hasExternalAuthentication()) {
+            return (A)account;
+        }
         // If no tenant is supplied, JOSS will attempt to auto-discover the tenant
         if (!account.isTenantSupplied()) {
             Tenant tenant = autoDiscoverTenant(account);

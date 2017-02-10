@@ -10,13 +10,14 @@ import org.javaswift.joss.model.Access;
 public class AccountImpl extends AbstractAccount {
 
     public AccountImpl(AuthenticationCommand command, HttpClient httpClient, Access access,
-                       boolean allowCaching, TempUrlHashPrefixSource tempUrlHashPrefixSource,
-                       Character delimiter) {
+                       boolean allowCaching, boolean hasExternalAuthentication,
+                       TempUrlHashPrefixSource tempUrlHashPrefixSource, Character delimiter) {
         super(
                 new AccountCommandFactoryImpl(httpClient, access, command, tempUrlHashPrefixSource, delimiter),
                 new ContainerFactoryImpl(),
                 new WebsiteFactoryImpl(),
-                allowCaching
+                allowCaching,
+                hasExternalAuthentication
         );
     }
 

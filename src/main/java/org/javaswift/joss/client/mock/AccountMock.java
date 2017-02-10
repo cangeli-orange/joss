@@ -11,7 +11,8 @@ public class AccountMock extends AbstractAccount {
                 new AccountCommandFactoryMock(swift),
                 new ContainerFactoryMock(),
                 new WebsiteFactoryMock(),
-                ALLOW_CACHING
+                ALLOW_CACHING,
+                false
         );
     }
 

@@ -33,13 +33,16 @@ public abstract class AbstractAccount extends AbstractObjectStoreEntity<AccountI
 
     private ServerTime serverTime = new ServerTime(0);
 
+    private boolean hasExternalAuthentication;
+
     public AbstractAccount(AccountCommandFactory commandFactory, ContainerFactory<Container> containerFactory,
-                           ContainerFactory<Website> websiteFactory, boolean allowCaching) {
+                           ContainerFactory<Website> websiteFactory, boolean allowCaching, boolean hasExternalAuthentication) {
         super(allowCaching);
         this.containerCache = new ContainerCache<Container>(this, containerFactory);
         this.websiteCache = new ContainerCache<Website>(this, websiteFactory);
         this.commandFactory = commandFactory;
         this.info = new AccountInformation();
+        this.hasExternalAuthentication = hasExternalAuthentication;
     }
 
     public Collection<Container> list() {
@@ -203,6 +206,11 @@ public abstract class AbstractAccount extends AbstractObjectStoreEntity<AccountI
     @Override
     public boolean isTenantSupplied() {
         return this.commandFactory.isTenantSupplied();
+    }
+
+    @Override
+    public boolean hasExternalAuthentication() {
+        return this.hasExternalAuthentication;
     }
 
     @Override

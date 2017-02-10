@@ -9,6 +9,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.javaswift.joss.client.core.AbstractClient;
 import org.javaswift.joss.client.factory.AccountConfig;
+import org.javaswift.joss.client.factory.AuthenticationMethod;
 import org.javaswift.joss.command.impl.factory.AuthenticationCommandFactoryImpl;
 import org.javaswift.joss.command.shared.factory.AuthenticationCommandFactory;
 import org.javaswift.joss.command.shared.identity.AuthenticationCommand;
@@ -100,7 +101,7 @@ public class ClientImpl extends AbstractClient<AccountImpl> {
         access.setPreferredRegion(accountConfig.getPreferredRegion());
         LOG.info("JOSS / Applying preferred region: "+(accountConfig.getPreferredRegion() == null ? "none" : accountConfig.getPreferredRegion()));
         LOG.info("JOSS / Using TempURL hash prefix source: "+accountConfig.getTempUrlHashPrefixSource());
-        return new AccountImpl(command, httpClient, access, accountConfig.isAllowCaching(),
+        return new AccountImpl(command, httpClient, access, accountConfig.isAllowCaching(), accountConfig.getAuthenticationMethod() == AuthenticationMethod.EXTERNAL,
                                accountConfig.getTempUrlHashPrefixSource(), accountConfig.getDelimiter());
     }
 
