@@ -21,7 +21,7 @@ public abstract class AbstractSecureCommand<M extends HttpRequestBase, N> extend
     }
 
     public static String getURL(Access access, ObjectStoreEntity entity) {
-        return access.getInternalURL() + entity.getPath();
+        return access.getPublicURL() + entity.getPath();
     }
 
     @Override
