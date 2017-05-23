@@ -34,7 +34,10 @@ public abstract class AbstractClient<A extends Account> implements Client<A> {
     public A authenticate() {
         A account = createAccount();
         if (account.hasExternalAuthentication()) {
-            return (A)account;
+            return (A)account
+                .setAllowContainerCaching(accountConfig.isAllowContainerCaching())
+                .setAllowReauthenticate(accountConfig.isAllowReauthenticate())
+                .setUsePrivateURL(accountConfig.isUsePrivateURL());
         }
         // If no tenant is supplied, JOSS will attempt to auto-discover the tenant
         if (!account.isTenantSupplied()) {
@@ -51,7 +54,8 @@ public abstract class AbstractClient<A extends Account> implements Client<A> {
                 .setPrivateHost(accountConfig.getPrivateHost())
                 .setAllowContainerCaching(accountConfig.isAllowContainerCaching())
                 .setAllowReauthenticate(accountConfig.isAllowReauthenticate())
-                .setHashPassword(accountConfig.getHashPassword());
+                .setHashPassword(accountConfig.getHashPassword())
+                .setUsePrivateURL(accountConfig.isUsePrivateURL());
     }
 
     protected Tenant autoDiscoverTenant(Account account) {

@@ -56,6 +56,7 @@ public class AccountFactoryTest {
                 .setHashPassword(null)
                 .setHttpClient(null)
                 .setMock(true)
+                .setMockClasspath(null)
                 .setMockAllowEveryone(true)
                 .setMockAllowObjectDeleter(true)
                 .setMockMillisDelay(0)
@@ -71,7 +72,8 @@ public class AccountFactoryTest {
                 .setTenantName(null)
                 .setTenantId(null)
                 .setUsername(null)
-                .setDelimiter('\\');
+                .setDelimiter('\\')
+                .setUsePrivateURL(false);
     }
 
 }

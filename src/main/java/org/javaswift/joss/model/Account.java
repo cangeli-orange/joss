@@ -188,4 +188,12 @@ public interface Account extends ObjectStoreEntity, ListHolder<Container> {
      */
     boolean hasExternalAuthentication();
 
+    /**
+     * Use private URL.
+     * @param usePrivateURL
+     * @return instance of Account
+     */
+    Account setUsePrivateURL(boolean usePrivateURL);
+
+    boolean isUsePrivateURL();
 }

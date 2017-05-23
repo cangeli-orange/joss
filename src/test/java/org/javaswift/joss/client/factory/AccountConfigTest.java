@@ -18,6 +18,7 @@ public class AccountConfigTest {
         config.setHashPassword("somepwd");
         config.setTempUrlHashPrefixSource("PUBLIC_URL_PATH");
         config.setAuthenticationMethod("BASIC");
+        config.setUseprivateURL(false);
         config.setMock(true);
         config.setMockMillisDelay(10);
         config.setAllowCaching(true);
